@@ -53,7 +53,7 @@ def plot_non_saturated_2_k(): #N = M
                 res.append(binom.pmf(k,n,prob)) #Probability input lines are empty
                 print(res)
             else:
-                res_total_prob = 0;
+                res_total_prob = 0
                 for m in range(k, n+1): #total Prob formula for each possible m input
                     aux = 1-calculate_prob_at_least_one_bin_occupied(k, n, m)
                     res_total_prob = res_total_prob + (aux * binom.pmf(m,n,prob)) #num of success m (inputs) in n input lines
