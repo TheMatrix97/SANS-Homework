@@ -7,6 +7,7 @@ def calculate_individual_E_saturated(n):
     # P(E) = 1 - P(E^C) = 1-(1-1/n)^n
     return 1-pow(1-(1/n),n)
 
+
 def calculate_individual_E_non_saturated(N, prob):
     # Total probability formula
     sum = 0
@@ -31,6 +32,29 @@ def prob_x_bins_empty(N):
             res = res + aCb(N, n)*pow((N-n)/N,N)
         print(res,n)
 
+
+def plot_saturated_2_k():
+    N = [4,8,32,64,128]
+    for n in N:
+        f1 = plt.figure()
+        ax1 = f1.add_subplot()
+        ax1.set(xlabel='k', ylabel='p(sum(x) = k)', title='N = '+ str(n) +' - Saturated switch')
+        res = []
+        for k in range(1, n+1):
+            res.append(1-calculate_prob_at_least_one_bin_occupied(k, n, n))
+        ax1.plot(list(range(1,n+1)),res)
+        #f1.show()
+        f1.savefig(str(n)+"_saturated_part2.png")
+
+def calculate_prob_at_least_one_bin_occupied(k, n, m): #N output M input
+    res = 0
+    for r in range(1, k+1):
+        #print(aux)
+        if r % 2 == 0:
+            res = res - aCb(k, r)* pow(1-r/n, m)
+        else:
+            res = res + aCb(k, r)* pow(1-r/n, m)
+    return res
 
 
 def k_occupied_input_lines(N):
@@ -97,4 +121,6 @@ def main():
 
 #plot_saturated_1()
 #plot_non_saturated_1()
-prob_x_bins_empty(32)
+#prob_x_bins_empty(32)
+
+plot_saturated_2_k()
