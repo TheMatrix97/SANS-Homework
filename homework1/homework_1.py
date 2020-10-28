@@ -29,16 +29,8 @@ def prob_x_bins_empty(N):
             res = res - aCb(N, n)*pow((N-n)/N,N)
         else:
             res = res + aCb(N, n)*pow((N-n)/N,N)
-        print(1-res,n)
+        print(res,n)
 
-def prob_x_bins_empty(N):
-    res = 0
-    for n in range(1,N):
-        if n % 2 == 0:
-            res = res - aCb(N, n)*pow((N-n)/N,N)
-        else:
-            res = res + aCb(N, n)*pow((N-n)/N,N)
-        print(1-res,n)
 
 
 def k_occupied_input_lines(N):
@@ -103,5 +95,6 @@ def main():
         print("i-> ",i,"Expected aggregated", prob*i, "Expected single", prob)
 
 
-plot_saturated_1()
-plot_non_saturated_1()
+#plot_saturated_1()
+#plot_non_saturated_1()
+prob_x_bins_empty(32)
