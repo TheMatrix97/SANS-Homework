@@ -21,14 +21,6 @@ def calculate_individual_E_non_saturated(N, prob):
     #print("N", N, "prob", prob, "sum", sum)
     return sum
 
-def prob_x_bins_empty(N):
-    res = 0
-    for n in range(1,N):
-        if n % 2 == 0:
-            res = res - aCb(N, n)*pow((N-n)/N,N)
-        else:
-            res = res + aCb(N, n)*pow((N-n)/N,N)
-        print(res,n)
 
 def calculate_prob_at_least_one_bin_occupied(k, n, m): #N output M input
     res = 0
